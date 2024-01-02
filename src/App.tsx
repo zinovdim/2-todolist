@@ -12,8 +12,8 @@ function App() {
         {id: v1(), title: "HTML&CSS", isDone: true},
         {id: v1(), title: "JS", isDone: true},
         {id: v1(), title: "ReactJS", isDone: false},
-        {id: v1(), title: "ES6", isDone: false}
-    ])
+        {id: v1(), title: "ES6", isDone: false},
+        ])
 
     const [filterValue, setFilterValue] = useState<FilterValueType>("all")
 
@@ -28,6 +28,11 @@ function App() {
             isDone: false
         }
         const nextState: Array<TasksType> = [newTask, ...tasks]
+        setTasks(nextState)
+    }
+
+    const changeTaskStatus = (taskID: string, newIsDoneValue: boolean) => {
+        const nextState: Array<TasksType> = tasks.map(el => el.id === taskID ? {...el, isDone: newIsDoneValue} : el)
         setTasks(nextState)
     }
 
@@ -52,9 +57,11 @@ function App() {
             <Todolist
                 title="What to learn"
                 tasks={filteredTasks}
+                filterValue={filterValue}
                 removeTask={removeTask}
                 changeTodolistFilter={changeTodolistFilter}
                 addTask={addTask}
+                changeTaskStatus = {changeTaskStatus}
             />
             {/*<Todolist title="What to buy" tasks={tasks2}/>*/}
         </div>

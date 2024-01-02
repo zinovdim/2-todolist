@@ -12,3 +12,16 @@
   background-color: blanchedalmond;
   padding: 15px;
 }
+.task {
+  font-width: bold;
+}
+
+.task-done {
+  opacity: 0.5;
+  text-decoration: line-through;
+}
+
+.btn-active {
+  background-color: blue;
+  color: aliceblue;
+}
